@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Description Generator</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #8EC5FC, #E0C3FC);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #444;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 600px;
+            animation: fadeIn 1s ease-in-out;
+            margin: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        textarea {
+            width: 90%;
+            height: 120px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            resize: none;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background: #6A5ACD;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(106, 90, 205, 0.4);
+        }
+
+        button:hover {
+            background: #5847C6;
+            transform: translateY(-2px);
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px dashed #ccc;
+            border-radius: 15px;
+            background: #f9f9f9;
+            font-size: 1rem;
+            color: #555;
+            min-height: 60px;
+        }
+
+        .output span {
+            color: #6A5ACD;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        footer a {
+            color: #6A5ACD;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Instagram Description Generator ✨</h1>
+        <textarea id="keywords" placeholder="Enter your keywords (e.g., travel, food, love), separated by commas..."></textarea>
+        <button onclick="generateDescription()">Generate Description</button>
+        <div id="output" class="output">Your generated description will appear here...</div>
+        <footer>
+            Made with ❤️ by <a href="https://example.com" target="_blank">Naksh Garg</a>
+        </footer>
+    </div>
+
+    <script>
+        function generateDescription() {
+            const keywordsInput = document.getElementById('keywords').value;
+            const outputDiv = document.getElementById('output');
+
+            if (!keywordsInput.trim()) {
+                outputDiv.textContent = "Please enter some keywords to generate a description!";
+                return;
+            }
+
+            const keywords = keywordsInput.split(',').map(keyword => keyword.trim());
+            const emojis = ["✨", "🌟", "💫", "🔥", "🌸", "💖", "🚀", "🎉", "😍", "🌈", "🌿", "🎶", "📸", "🍃"];
+            const randomEmoji = () => emojis[Math.floor(Math.random() * emojis.length)];
+
+            const description = keywords
+                .map(keyword => `<span>${keyword}</span> ${randomEmoji()}`)
+                .join(' | ');
+
+            outputDiv.innerHTML = description;
+        }
+    </script>
+</body>
+</html>
